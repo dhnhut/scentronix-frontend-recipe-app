@@ -1,0 +1,20 @@
+.main_menu .main_menu_button {
+  color: black;
+  border: 0px !important;
+  padding-left: 20px ;
+  padding-right: 20px ;
+  font-weight: bold;
+}
+
+.sub_menu .sub_menu_button {
+  color: black;
+  border: 0px !important;
+  padding-left: 20px ;
+  padding-right: 20px ;
+  font-weight: bold;
+  font-size: smaller;
+}
+
+.selected_menu {
+  font-weight: bold !important;
+}

@@ -1,9 +1,10 @@
 "use client";
 
-import Image from "next/image";
+import styles from "./layout.module.css";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Grid, Box, ButtonGroup, Button, Container } from "@mui/material";
+import { Grid, ButtonGroup, Button, Container } from "@mui/material";
 import clsx from "clsx";
 
 const links = [
@@ -20,17 +21,23 @@ export default function Header() {
     <Grid container spacing={0}>
       <Grid xs={12}>
         <Container>
-          {/* <Image src="logo.svg" width={100} height={100} /> */}
           <ButtonGroup
+            className={styles.main_menu}
             size="large"
             variant="text"
             aria-label="Basic button group"
           >
             {links.map((link) => {
               return (
-                <Button component={Link} key={link.href} sx={{ flexGrow: 1 }} href={link.href} className={clsx({
-                  "selected": pathname === link.href,
-                })}>
+                <Button
+                  component={Link}
+                  key={link.href}
+                  sx={{ flexGrow: 1 }}
+                  href={link.href}
+                  className={clsx(styles.main_menu_button, {
+                    selected_menu: pathname === link.href,
+                  })}
+                >
                   {link.name}
                 </Button>
               );
@@ -41,14 +48,19 @@ export default function Header() {
       <Grid xs={12} sx={{ bgcolor: "#efebe9" }}>
         <Container>
           <ButtonGroup
+            className={styles.sub_menu}
             sx={{ display: "flex", flexDirection: "row", width: "100%" }}
             size="medium"
             variant="text"
             aria-label="Basic button group"
           >
-            <Button>Categories</Button>
-            <Button>Collections</Button>
-            <Button>Resources</Button>
+            {["Categories", "Collections", "Resources"].map((k) => {
+              return (
+                <Button key={k} className={styles.sub_menu_button}>
+                  {k}
+                </Button>
+              );
+            })}
           </ButtonGroup>
         </Container>
       </Grid>
